@@ -70,11 +70,18 @@ public class BasicItemController {
         return "basic/item";
     }
 
-    @PostMapping("/add")
+    //@PostMapping("/add")
     public String addItemV4(Item item) {
         //지정한 이름이 없으면 Class 이름에서 첫글자만 소문자로 바뀐 이름으로 모델에 넣음
         itemRepository.save(item);
         return "basic/item";
+    }
+
+    @PostMapping("/add")
+    public String addItemV5(Item item) {
+        //지정한 이름이 없으면 Class 이름에서 첫글자만 소문자로 바뀐 이름으로 모델에 넣음
+        itemRepository.save(item);
+        return "redirect:/basic/items/" + item.getId();
     }
 
     @GetMapping("/{itemId}/edit")
